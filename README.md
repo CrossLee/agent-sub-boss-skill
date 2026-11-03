@@ -4,6 +4,22 @@
 
 这是一个可安装的 **Codex Skill**，内含完整可运行模板、扫描器和验证流程。无需云端账户，无前端依赖安装，不包含作者的真实项目数据。
 
+## 复制给你的 Agent，自动安装
+
+将下面这段话复制给能够联网、操作本地文件的 Codex 或其他支持 Skill 的 Agent：
+
+```text
+请帮我安装 Sub-boss Skill：
+https://github.com/CrossLee/agent-sub-boss-skill
+请先阅读仓库根目录的 INSTALL.md，按当前 Agent 的环境完成安装并检查结果。如果已经安装，请保留现有内容并告诉我。安装完成后，告诉我如何使用它。
+```
+
+Agent 会读取[安装说明](INSTALL.md)，把 `skills/sub-boss` 安装到对应的 Skill 目录。安装完成后，在 Codex 中发送：
+
+```text
+使用 $sub-boss，为我的本地项目建立总控台。先确认项目目录，再盘点进展并配置预览服务。
+```
+
 ## 能做什么
 
 - 项目工作看板：风险、待拍板、待验证、延期、完结；搜索、分类、详情和四种主题。
@@ -14,7 +30,7 @@
 
 数据库类型是源码/依赖识别，不代表数据库已连接。项目盘点也不等于业务验收。
 
-## 安装 Skill
+## 手动安装
 
 ```bash
 git clone https://github.com/CrossLee/agent-sub-boss-skill.git
@@ -22,7 +38,7 @@ cd agent-sub-boss-skill
 python3 scripts/install_skill.py
 ```
 
-默认安装到 `${CODEX_HOME:-~/.codex}/skills/sub-boss`。如果已有同名目录，安装器会拒绝覆盖。重新开启 Codex 对话后使用：
+默认安装到 `${CODEX_HOME:-~/.codex}/skills/sub-boss`。如果已有同名目录，安装器会拒绝覆盖。安装完成后发送新的消息调用；若当前客户端还未识别，再重新开启对话：
 
 > 使用 $sub-boss，为 ~/Projects 下的本地项目建立总控台，放在 ~/Projects/subboss。帮我核实项目进展，并统一管理预览服务。
 
