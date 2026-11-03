@@ -1,0 +1,21 @@
+name: Validate skill and workspace
+on: [push, pull_request]
+jobs:
+  test:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.16.0'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Linux tools
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y lsof sqlite3
+      - run: python3 -m unittest discover -s tests -v
+      - run: node --test skills/sub-boss/assets/workspace/dashboard-web/*.test.mjs

@@ -1,0 +1,6 @@
+.subboss/
+dashboard-web/state/*
+!dashboard-web/state/.gitkeep
+output/
+*.log
+.DS_Store

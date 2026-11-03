@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="command">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark light"><meta name="theme-color" content="#111310">
+<title>SUB-BOSS · 工作指挥台</title>
+<script>try{const t=localStorage.getItem('subboss-theme');if(['command','orbit','paper','cyberpunk'].includes(t))document.documentElement.dataset.theme=t;if(localStorage.getItem('subboss-motion')==='paused')document.documentElement.classList.add('motion-paused')}catch{}</script>
+<link rel="stylesheet" href="/styles.css?v=7">
+<link rel="stylesheet" href="/motion.css?v=1">
+<link rel="stylesheet" href="/theme-cyberpunk.css?v=3">
+</head>
+<body>
+<a class="skip-link" href="#mainContent">跳至工作区</a>
+<div class="app-shell">
+<aside class="sidebar" id="sidebar" aria-label="工作导航">
+<a class="brand" href="#overview" aria-label="SUB-BOSS，返回总览" title="SUB-BOSS · Codex二级老板"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>SUB-BOSS<small>Codex二级老板</small></span></a>
+<div class="scope-label"><span>我的工作空间</span><span class="scope-dot" aria-hidden="true"></span></div>
+<nav id="navigation" class="navigation" aria-label="工作视图"></nav>
+<a class="nav-item" href="/runtime.html" style="margin-top:12px;text-decoration:none"><span aria-hidden="true">▶</span><span>项目启动台</span></a>
+<div class="sidebar-foot"><div class="local-note"><span class="connection-dot"></span><span id="connectionLabel">正在连接</span></div><p>本地运行 · 仅本机可见</p><div class="sidebar-rule"></div><span class="sidebar-caption">根据项目证据汇总<br>你决策，副手记住下一步。</span></div>
+</aside>
+<button class="sidebar-scrim" id="sidebarScrim" aria-label="关闭导航" hidden></button>
+<div class="workspace-shell">
+<header class="topbar"><div class="breadcrumb"><button class="icon-button menu-toggle" id="menuButton" aria-label="展开导航" aria-expanded="false">☰</button><span>工作空间</span><span class="crumb-slash">/</span><strong id="breadcrumbTitle">总览</strong></div>
+<div class="topbar-tools"><span id="syncTime" class="sync-time">等待同步</span><button class="tool-button" id="motionReplayButton" aria-label="重播页面动效" title="重播入场动效，不重新读取数据"><span aria-hidden="true">▷</span><span class="motion-button-label">重播</span></button><button class="tool-button" id="quickMotionButton" aria-label="暂停全部动效" aria-pressed="false" title="暂停全部动效"><span class="quick-motion-icon" aria-hidden="true">Ⅱ</span><span class="quick-motion-label">暂停</span></button><button class="tool-button" id="themeButton" aria-haspopup="dialog"><span class="theme-glyph" aria-hidden="true">◐</span><span>主题</span></button><button class="tool-button" id="presentationButton" aria-pressed="false"><span aria-hidden="true">⛶</span><span class="presentation-label">演示</span></button><button class="refresh-button" id="refreshButton"><span class="refresh-icon" aria-hidden="true">↻</span><span>刷新</span></button></div></header>
+<main id="mainContent" tabindex="-1"><div class="load-error" id="loadError" role="alert" hidden></div><div id="pageContent"><div class="loading-state"><span class="loading-ring"></span><p>正在整理你的工作空间</p><small>读取本地项目与操作记录</small></div></div></main>
+<footer class="workspace-footer"><span>项目、对话与产品，统一续办。</span><span id="footerTime">本地工作指挥台</span></footer>
+</div></div>
+<dialog class="theme-dialog" id="themeDialog" aria-labelledby="themeTitle"><div class="dialog-heading"><div><p class="eyebrow">让工作台适合你</p><h2 id="themeTitle">外观与动效</h2></div><button class="icon-button" data-close-theme aria-label="关闭主题设置">×</button></div><div class="theme-options" id="themeOptions"></div><div class="motion-setting"><div><strong>状态动效</strong><p>图表展开、数字递增、轨道与卡片流光</p></div><button class="switch" id="motionButton" role="switch" aria-checked="true" aria-label="状态动效"><span></span></button></div><p class="theme-note">动效仅展示当前快照，不代表实时扫描。偏好保存在当前浏览器；系统开启“减弱动态效果”时自动静止。</p></dialog>
+<dialog class="detail-dialog" id="detailDialog" aria-labelledby="detailTitle"><div id="detailContent" class="detail-content"></div></dialog>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script type="module" src="/app.js?v=7"></script>
+</body></html>

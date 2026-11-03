@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#111510">
+  <title>项目启动台 · 副手</title>
+  <link rel="stylesheet" href="/runtime.css?v=1">
+</head>
+<body>
+  <a class="skip-link" href="#projects">跳到项目列表</a>
+  <div class="console-shell">
+    <aside class="rail" aria-label="工作导航">
+      <a class="brand" href="/" aria-label="副手，返回工作看板"><span class="brand-symbol" aria-hidden="true">副</span><span>副手<small>本地工作空间</small></span></a>
+      <p class="nav-caption">工作空间</p>
+      <nav><a href="/"><span aria-hidden="true">▦</span> 工作看板 <span class="nav-arrow" aria-hidden="true">↗</span></a><a href="/runtime.html" aria-current="page"><span aria-hidden="true">▷</span> 项目启动台</a></nav>
+      <div class="rail-note"><span class="connection-dot" id="connectionDot"></span><strong id="connectionLabel">正在连接</strong><p>统一启动，随时预览。<br>服务状态每 4 秒更新。</p><span class="scope-label">扫描范围</span><code id="rootPath">本地项目目录</code></div>
+    </aside>
+    <div class="workspace">
+      <header class="topbar"><span class="breadcrumb">工作空间 <span aria-hidden="true">/</span> <strong>项目启动台</strong></span><div class="topbar-actions"><span id="updatedAt" class="sync-label">等待同步</span><button id="scanButton" class="button secondary" disabled><span class="scan-icon" aria-hidden="true">↻</span><span>重新扫描</span></button></div></header>
+      <main>
+        <section class="intro" aria-labelledby="pageTitle"><div><p class="kicker"><span class="mini-dot" aria-hidden="true"></span> 本地开发控制台</p><h1 id="pageTitle">让项目，随时就绪。</h1><p class="intro-copy">启动服务、打开预览，查看每个项目的端口、技术栈与数据库。</p></div><div class="scope-tag"><span aria-hidden="true">⌘</span> 仅在本机控制</div></section>
+        <section class="stats" aria-label="项目运行概况">
+          <div class="stat"><span>本地项目</span><strong id="projectCount">—</strong><small id="serviceCount">正在读取项目</small></div>
+          <div class="stat is-running"><span><i class="status-dot" aria-hidden="true"></i>运行中的服务</span><strong id="runningCount">—</strong><small id="managedCount">包含已在外部启动的服务</small></div>
+          <div class="stat"><span>可以启动</span><strong id="readyCount">—</strong><small>已识别可用的启动命令</small></div>
+          <div class="stat"><span>需要关注</span><strong id="attentionCount">—</strong><small id="attentionNote">启动失败、端口占用或待配置</small></div>
+        </section>
+        <div class="notice" id="notice" role="alert" hidden><span id="noticeText"></span><button id="retryButton" class="text-button">重新连接</button></div>
+        <section class="project-section" aria-label="项目与服务">
+          <div class="list-toolbar"><div class="filters" role="group" aria-label="筛选项目"><button data-filter="all" aria-pressed="true">全部项目 <span></span></button><button data-filter="running" aria-pressed="false">运行中 <span></span></button><button data-filter="ready" aria-pressed="false">可启动 <span></span></button><button data-filter="attention" aria-pressed="false">需关注 <span></span></button></div><label class="search"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" autocomplete="off" placeholder="搜索项目、技术栈、数据库或端口" aria-label="搜索项目、技术栈、数据库或端口"><kbd aria-hidden="true">/</kbd></label></div>
+          <div class="list-caption"><span id="resultCount" aria-live="polite">正在读取本地项目…</span><span>启动与停止仅作用于本台电脑</span></div>
+          <div id="initialState" class="empty-state" role="status"><span class="loading-ring" aria-hidden="true"></span><h2>正在读取项目</h2><p>识别启动命令、技术栈和服务状态</p></div>
+          <div id="emptyState" class="empty-state" hidden><span class="empty-symbol" aria-hidden="true">⌕</span><h2 id="emptyTitle">没有匹配的项目</h2><p id="emptyCopy">换个关键词，或查看全部项目。</p><button id="resetFilters" class="button secondary">清除筛选</button></div>
+          <div id="projects" class="project-grid" tabindex="-1" aria-label="项目列表"></div>
+        </section>
+        <footer><span id="scanTime">扫描时间：等待同步</span><span>技术栈与数据库按文件识别 · 未验证数据库连接</span></footer>
+      </main>
+    </div>
+  </div>
+  <dialog id="logDialog" class="log-dialog" aria-labelledby="logTitle"><div class="log-heading"><div><p class="kicker">服务输出</p><h2 id="logTitle">运行日志</h2><p id="logSubtitle"></p></div><button id="closeLogs" class="close-button" aria-label="关闭运行日志">×</button></div><div class="log-toolbar"><span id="logStatus" role="status">正在读取日志</span><div><label class="follow-toggle"><input id="followLogs" type="checkbox" checked> 跟随最新</label><button id="refreshLogs" class="button secondary small">刷新日志</button></div></div><pre id="logOutput" tabindex="0" aria-label="服务日志"></pre><div class="log-foot">仅显示通过启动台启动的服务输出；外部服务可能没有日志。</div></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <script type="module" src="/runtime.js?v=1"></script>
+</body>
+</html>

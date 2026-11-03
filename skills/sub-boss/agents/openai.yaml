@@ -1,0 +1,4 @@
+interface:
+  display_name: "Sub-boss 项目副手"
+  short_description: "从本地项目搭建管理看板，汇总进展风险并统一启动、停止和预览服务"
+  default_prompt: "使用 $sub-boss 为我的本地项目建立总控台，先盘点当前事实，再生成管理看板与项目启动台。"
